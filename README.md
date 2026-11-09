@@ -14,7 +14,7 @@ Abra http://localhost:5173/. Navegação: ← → · F tela cheia · S notas do 
 
 ## Estrutura
 
-- `index.html` — conteúdo dos 17 slides
+- `index.html` — conteúdo dos 18 slides
 - `src/main.js` — coreografia das animações (GSAP) e gráficos
 - `src/scene.js` — fundo de partículas (Three.js)
 - `src/style.css` — estilo da versão clara

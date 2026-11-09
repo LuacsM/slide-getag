@@ -132,6 +132,7 @@ const STATES = {
   presente:    { uA: 1,    uB: 0, cam: [0, 0, 17],   look: [0, 0, 0],     fov: 46, c: SPHERE_DONUT },
   frentes:     { uA: 1,    uB: 0, cam: [0, 0, 17],   look: [0, 0, 0],     fov: 46, c: [0, -19, -8], k: 3.4, o: 0.7 },
   curso:       { uA: 1,    uB: 0, cam: [0, 0, 17],   look: [0, 0, 0],     fov: 46, c: [13, 3, -8], k: 1.4, o: 0.5 },
+  areas:       { uA: 1,    uB: 0, cam: [0, 0, 17],   look: [0, 0, 0],     fov: 46, c: [0, -19, -8], k: 3.4, o: 0.45 },
   capRisco:    { uA: 1,    uB: 0, cam: [0, 0, 17],   look: [0, 0, 0],     fov: 46, c: [5.6, 0.2, -2], k: 1.45, al: 1 },
   infra:       { uA: 1,    uB: 0, cam: [0, 0, 17],   look: [0, 0, 0],     fov: 46, c: [13, 6, -14], k: 1.6, o: 0.45, al: 1 },
   risco:       { uA: 1,    uB: 0, cam: [0, 0, 17],   look: [0, 0, 0],     fov: 46, c: [3, 1, -34], k: 3, o: 0.8, al: 1 },

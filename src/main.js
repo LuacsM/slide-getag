@@ -295,6 +295,50 @@ const choreo = {
 
   cap1: chapter, cap2: chapter, capRisco: chapter, cap3: chapter,
 
+  areas: {
+    enter(root) {
+      const tl = gsap.timeline();
+      eyebrowIn(root, tl);
+      wordsIn(root, tl, 0.15);
+      gsap.set($('.ill [data-anim], [data-anim="steam"] path, [data-anim="grow"] rect, [data-anim="blink"] > *', root), { clearProps: 'all' });
+      fadeUp(tl, root.querySelector('.areas-note'), 0.7);
+      const tot = root.querySelector('.areas-total');
+      tl.add(countUp(tot, $('.a-n', root).reduce((s, el) => s + +el.dataset.v, 0), 2.2), 0.7);
+      // cartões "saltam" na tela como figurinhas coladas num álbum
+      const cards = $('.area', root);
+      tl.fromTo(cards, { opacity: 0, scale: 0.6, y: 60, rotation: () => gsap.utils.random(-7, 7) },
+        { opacity: 1, scale: 1, y: 0, rotation: 0, duration: 1.1, ease: 'back.out(1.8)', stagger: { each: 0.11, grid: [3, 3], from: 'start' } }, 0.5);
+      cards.forEach((card, i) => {
+        const at = 0.75 + i * 0.11;
+        tl.fromTo(card.querySelector('.bg'), { scale: 0, transformOrigin: '50% 50%' }, { scale: 1, duration: 1, ease: 'elastic.out(1, 0.5)' }, at);
+        tl.fromTo($('.p', card), { scale: 0, opacity: 0, transformOrigin: '50% 50%' },
+          { scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(2.6)', stagger: 0.09 }, at + 0.2);
+        const n = card.querySelector('.a-n');
+        tl.add(countUp(n, +n.dataset.v, 1.1), at + 0.3);
+      });
+      // depois, cada ilustração ganha vida com um movimento próprio
+      tl.add(() => {
+        const a = [];
+        const r = (min, max) => gsap.utils.random(min, max);
+        $('[data-anim="bob"]', root).forEach((el) => a.push(gsap.to(el, { y: -6, duration: r(1.2, 1.7), ease: 'sine.inOut', yoyo: true, repeat: -1 })));
+        $('[data-anim="swing"]', root).forEach((el) => a.push(gsap.to(el, { rotation: -10, transformOrigin: '50% 100%', duration: 0.9, ease: 'sine.inOut', yoyo: true, repeat: -1 })));
+        $('[data-anim="pulse"]', root).forEach((el) => a.push(gsap.to(el, { scale: 1.3, rotation: 20, transformOrigin: '50% 50%', duration: 1, ease: 'sine.inOut', yoyo: true, repeat: -1 })));
+        $('[data-anim="steam"] path', root).forEach((el, i) => a.push(gsap.fromTo(el, { y: 4, opacity: 0 }, { y: -8, opacity: 1, duration: 1.6, ease: 'sine.out', repeat: -1, delay: i * 0.8, yoyo: true })));
+        $('[data-anim="bounce"]', root).forEach((el) => a.push(gsap.to(el, { y: -9, duration: 0.55, ease: 'power1.out', yoyo: true, repeat: -1, repeatDelay: 0.25 })));
+        $('[data-anim="grow"] rect', root).forEach((el, i) => a.push(gsap.fromTo(el, { scaleY: 0.55 }, { scaleY: 1, transformOrigin: '50% 100%', duration: 1.1, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: i * 0.2 })));
+        $('[data-anim="blink"]', root).forEach((g) => [...g.children].forEach((el, i) =>
+          a.push(gsap.fromTo(el, { opacity: 0.25 }, { opacity: 1, duration: 0.7, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: i * 0.25 }))));
+        idle.set(root, a);
+      }, 2.2);
+      return tl;
+    },
+    exit(root) {
+      const tl = genericExit(root);
+      tl.to($('.area', root), { scale: 0.7, y: 40, opacity: 0, duration: 0.55, ease: 'back.in(1.6)', stagger: { each: 0.04, from: 'end' } }, 0);
+      return tl;
+    },
+  },
+
   infra: {
     enter(root) {
       const tl = gsap.timeline();
@@ -650,7 +694,8 @@ function killSlide(root) {
   idle.delete(root);
 }
 function resetSlide(root) {
-  gsap.set(root.querySelectorAll('*'), { clearProps: 'transform,opacity,filter,x,y,z,scale,rotate,clipPath' });
+  // ilustrações SVG ficam de fora: limpar transform apagaria os atributos transform originais
+  gsap.set(root.querySelectorAll('*:not(.ill *)'), { clearProps: 'transform,opacity,filter,x,y,z,scale,rotate,clipPath' });
 }
 
 function updateChrome(root) {
