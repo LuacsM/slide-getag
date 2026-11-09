@@ -1,25 +1,21 @@
 {
-  "total": 90,
+  "total": 85,
   "porStatus": {
-    "producao": 49,
-    "andamento": 11,
+    "producao": 48,
+    "andamento": 13,
     "descontinuado": 10,
-    "paralisado": 2,
-    "sem_status": 4,
     "futuro": 14
   },
   "porTipo": {
     "web": 46,
     "app": 5,
     "analytics": 31,
-    "geo": 5,
     "outros": 3
   },
   "producaoPorTipo": {
     "web": 24,
     "app": 1,
-    "analytics": 21,
-    "geo": 3
+    "analytics": 23
   },
   "producao2026": 32,
   "tecnologia": {
@@ -29,12 +25,12 @@
     "nodeLegado": 9
   },
   "qualidade": {
-    "semStatus": 4,
-    "semAno": 18,
-    "linhasRef": 21
+    "semStatus": 0,
+    "semAno": 16,
+    "linhasRef": 0
   },
   "descontinuadosPainel": 7,
-  "versao2026": 42,
+  "versao2026": 41,
   "futuros": [
     "SISTEMA GAE-3.0",
     "SISTEMA R3G-NIG",
@@ -54,6 +50,7 @@
   "andamento": [
     "APP AVAM IOS",
     "PROVÃO DIGITAL",
+    "SME Digial - SOLICITAÇÃO DE DEMANDAS",
     "ADMISSIONAL CONCURSOS",
     "MOODLE CEMEAM",
     "API GATEWAY",
@@ -61,8 +58,9 @@
     "PSS DIVERSIDADE INDÍGENA",
     "SISTEMA SELO ESCOLA ANTIRRACISTA - SEAN",
     "SISTEMA DE AUTOMAÇÃO DE CARGAS VAGAS - SACV",
+    "APLICATIVO GPTEC – App GPTEC",
     "APLICATIVO GAE ESTOQUE ESCOLA- App GAE ESCOLA",
     "Sistema de Gerenciamento de Formação Continuada – SIGEFCON"
   ],
-  "geradoEm": "2026-11-08T21:17:54.802Z"
+  "geradoEm": "2026-11-09T17:46:51.460Z"
 }

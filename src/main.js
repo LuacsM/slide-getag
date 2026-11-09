@@ -5,9 +5,9 @@ import { createScene } from './scene.js';
 import data from './data.json';
 
 /* ------------------------------------------------------------------ */
-/* dados derivados da planilha                                         */
+/* dados do portfólio                                                  */
 /* ------------------------------------------------------------------ */
-const S = data.porStatus;
+const S = { paralisado: 0, sem_status: 0, ...data.porStatus };
 const P = data.producaoPorTipo;
 const pct = (a, b) => Math.round((a / b) * 100);
 const VALUES = {
@@ -38,13 +38,13 @@ const STATUS_SEGMENTS = [
   { label: 'Entrega futura', v: S.futuro, color: '#22a33c' },
   { label: 'Descontinuadas', v: S.descontinuado, color: '#b6bdd0' },
   { label: 'Paralisadas ou sem status', v: S.paralisado + S.sem_status, color: '#e39aa7' },
-];
+].filter((s) => s.v > 0);
 const TYPES = [
   { label: 'Aplicações web', v: P.web || 0 },
   { label: 'Painéis analíticos', v: P.analytics || 0 },
   { label: 'Geoprocessamento', v: P.geo || 0 },
   { label: 'Aplicativo móvel', v: P.app || 0 },
-];
+].filter((t) => t.v > 0);
 
 const $ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const NS = 'http://www.w3.org/2000/svg';
@@ -75,6 +75,7 @@ const segs = STATUS_SEGMENTS.map((s) => {
 document.getElementById('legend').innerHTML = STATUS_SEGMENTS.map(
   (s) => `<li><i style="background:${s.color}"></i><span><b>${s.v}</b>${s.label}</span></li>`
 ).join('');
+document.getElementById('types').style.gridTemplateColumns = `repeat(${TYPES.length}, 1fr)`;
 document.getElementById('types').innerHTML = TYPES.map(
   (t) => `<div class="type"><div class="t-row"><span class="t-name">${t.label}</span>
     <span class="t-val" data-v="${t.v}">0</span></div>
@@ -102,6 +103,7 @@ $('.split').forEach((el) => {
 $('.ledger .lrow:not(.head)').forEach((r) => r.insertAdjacentHTML('beforeend', '<i class="strike"></i>'));
 $('.col').forEach((c) => c.insertAdjacentHTML('afterbegin', '<i class="sweep"></i>'));
 $('.p-n').forEach((el) => (el.dataset.v = el.textContent));
+$('.risks li').forEach((li) => li.insertAdjacentHTML('afterbegin', '<i class="dot"></i>'));
 
 // linha do tempo de fim de suporte
 const T0 = new Date('2025-01-01'), T1 = new Date('2027-06-01'), TODAY = new Date('2026-11-01');
@@ -291,7 +293,63 @@ const choreo = {
     },
   },
 
-  cap1: chapter, cap2: chapter, cap3: chapter,
+  cap1: chapter, cap2: chapter, capRisco: chapter, cap3: chapter,
+
+  infra: {
+    enter(root) {
+      const tl = gsap.timeline();
+      eyebrowIn(root, tl);
+      wordsIn(root, tl, 0.15);
+      // cada hospedagem sobe como um cartão; os riscos acendem um a um, como alertas
+      tl.fromTo($('.host', root), { opacity: 0, y: 60, clipPath: 'inset(100% 0% 0% 0% round 22px)' },
+        { opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0% round 22px)', duration: 1.2, ease: 'expo.out', stagger: 0.25 }, 0.6);
+      $('.host-n', root).forEach((el, i) => tl.add(countUp(el, +el.dataset.v, 0.9), 1.1 + i * 0.25));
+      const lis = $('.risks li', root);
+      tl.fromTo(lis, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out', stagger: 0.22 }, 1.3);
+      tl.fromTo($('.risks .dot', root), { scale: 0 }, { scale: 1, duration: 0.6, ease: 'back.out(3)', stagger: 0.22 }, 1.35);
+      tl.add(() => {
+        const a = $('.risks .dot', root).map((d, i) => gsap.to(d, {
+          boxShadow: '0 0 0 12px rgba(201, 55, 79, 0)', duration: 1.4, ease: 'power2.out', repeat: -1, delay: i * 0.25,
+        }));
+        idle.set(root, a);
+      });
+      return tl;
+    },
+    exit(root) {
+      const tl = genericExit(root);
+      tl.to($('.host', root), { clipPath: 'inset(0% 0% 100% 0% round 22px)', duration: 0.7, ease: 'power3.in', stagger: 0.08 }, 0);
+      return tl;
+    },
+  },
+
+  nuvem: {
+    enter(root) {
+      const tl = gsap.timeline();
+      eyebrowIn(root, tl);
+      wordsIn(root, tl, 0.15);
+      fadeUp(tl, root.querySelector('.lede'), 0.8);
+      // os dois servidores de hoje aparecem, perdem cor e convergem para a nuvem
+      const fbs = $('.fb', root);
+      tl.fromTo(fbs, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.15 }, 0.6);
+      const paths = $('.links path', root);
+      paths.forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.dataset.l = L; });
+      tl.fromTo(paths, { strokeDashoffset: (i, p) => +p.dataset.l }, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' }, 1.3);
+      tl.to(fbs, { opacity: 0.45, filter: 'grayscale(1)', duration: 0.8 }, 1.6);
+      tl.fromTo(root.querySelector('.cloud-card'), { opacity: 0, y: 60, scale: 0.94, filter: 'blur(12px)' },
+        { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1.3, ease: 'expo.out' }, 2.0);
+      tl.fromTo($('.layer', root), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: -0.18 }, 2.4);
+      tl.fromTo(root.querySelector('.owner'), { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(2)' }, 3.0);
+      // cada resposta recebe seu "ok"
+      tl.fromTo($('.answers li', root), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out', stagger: 0.2 }, 1.2);
+      tl.fromTo($('.answers li i', root), { scale: 0, rotate: -90 }, { scale: 1, rotate: 0, duration: 0.6, ease: 'back.out(2.5)', stagger: 0.2 }, 1.3);
+      return tl;
+    },
+    exit(root) {
+      const tl = genericExit(root);
+      tl.to(root.querySelector('.cloud-card'), { y: -40, duration: 0.6, ease: 'power2.in' }, 0);
+      return tl;
+    },
+  },
 
   passado: {
     enter(root) {
