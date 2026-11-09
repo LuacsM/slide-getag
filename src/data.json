@@ -1,0 +1,68 @@
+{
+  "total": 90,
+  "porStatus": {
+    "producao": 49,
+    "andamento": 11,
+    "descontinuado": 10,
+    "paralisado": 2,
+    "sem_status": 4,
+    "futuro": 14
+  },
+  "porTipo": {
+    "web": 46,
+    "app": 5,
+    "analytics": 31,
+    "geo": 5,
+    "outros": 3
+  },
+  "producaoPorTipo": {
+    "web": 24,
+    "app": 1,
+    "analytics": 21,
+    "geo": 3
+  },
+  "producao2026": 32,
+  "tecnologia": {
+    "comVersao": 19,
+    "semSuporte": 19,
+    "laravelLegado": 13,
+    "nodeLegado": 9
+  },
+  "qualidade": {
+    "semStatus": 4,
+    "semAno": 18,
+    "linhasRef": 21
+  },
+  "descontinuadosPainel": 7,
+  "versao2026": 42,
+  "futuros": [
+    "SISTEMA GAE-3.0",
+    "SISTEMA R3G-NIG",
+    "API GATTWAY -SEDUC -> CAPI — Catálogo de APIs e Endpoints",
+    "ADMISSIONAL-Módulo Tramitação Entre Setores - ADMITES",
+    "APP PROVAODIGITAL - Leitura Cartão Resposta do Provão Digital – Prova Escrita (Android)",
+    "GAE - Módulo Solicitação Geral das Escolas (UTENSÍLIOS, MESA, ETC.)",
+    "PORTAL DE DADOS ABERTOS - PDAS",
+    "AUTENTICADOR GOV.BR - AUTHBR — Autenticador Gov.Br",
+    "Admissional PSS - Professores - DGP-GASS",
+    "Migrar tecnologia dos sistema desenvolvidos (Admissional concurso público, RH-Valida Folha, Selo Escola Antirracista, Sistema de Solicitação de Compras, Provão Digital, Avam WEB, Gestão de Parque Tecnológico)",
+    "Portal SABER MAIS",
+    "Admissional PSS - Administradores - DEGESC",
+    "Admissional PSS Diretores - DEGESC",
+    "Observalidade e automação de backups"
+  ],
+  "andamento": [
+    "APP AVAM IOS",
+    "PROVÃO DIGITAL",
+    "ADMISSIONAL CONCURSOS",
+    "MOODLE CEMEAM",
+    "API GATEWAY",
+    "MONITORAMENTO DA POLÍTICA NACIONAL DE ENSINO MÉDIO",
+    "PSS DIVERSIDADE INDÍGENA",
+    "SISTEMA SELO ESCOLA ANTIRRACISTA - SEAN",
+    "SISTEMA DE AUTOMAÇÃO DE CARGAS VAGAS - SACV",
+    "APLICATIVO GAE ESTOQUE ESCOLA- App GAE ESCOLA",
+    "Sistema de Gerenciamento de Formação Continuada – SIGEFCON"
+  ],
+  "geradoEm": "2026-11-08T21:17:54.802Z"
+}

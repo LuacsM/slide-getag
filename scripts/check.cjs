@@ -1,0 +1,10 @@
+const XLSX=require('xlsx');const wb=XLSX.readFile('data/relatorio.xlsx');
+const rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:'',raw:false}).filter(r=>String(r.SISTEMA).trim());
+const n=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').trim().toUpperCase();
+const prod=rows.filter(r=>/^EM PRO?DUCAO/.test(n(r.STATUS)));
+const c={};prod.forEach(r=>{const t=n(r['TIPO PROJETO']);c[t]=(c[t]||0)+1});console.log('prod tipos',c);
+console.log('prod 2026',prod.filter(r=>String(r['ANO ÚLTIMA VERSÃO']).trim()==='2026').length);
+console.log('sem ano (vazio)',rows.filter(r=>!String(r['ANO ÚLTIMA VERSÃO']).trim()).length,'#REF',rows.filter(r=>String(r.QTD).includes('#REF')).length);
+const tech=rows.filter(r=>String(r['FRAMEWORK/TECNOLOGIA/VERSÃO']).trim());
+console.log('com tecnologia',tech.length);
+tech.forEach(r=>console.log(' -',r.SISTEMA.trim(),'|',String(r['FRAMEWORK/TECNOLOGIA/VERSÃO']).replace(/\s+/g,' '),'|',r.STATUS));

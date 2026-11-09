@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GETAG · Nosso trabalho em três tempos</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <canvas id="gl"></canvas>
+  <div class="vignette"></div>
+  <div class="grain"></div>
+
+  <div class="chrome">
+    <img class="brand-logo" src="./assets/detin-getag.svg" alt="DETIN · GETAG" />
+    <div class="era" id="era"><span>01</span> Abertura</div>
+    <div class="progress"><div class="progress-fill" id="progress"></div></div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===================== 01 · CAPA ===================== -->
+      <section data-id="capa" data-era="Abertura" class="s-capa">
+        <div class="cover-logos"><img class="govam" src="./assets/govam-colorida.png" alt="Governo do Amazonas" /><i></i><img class="seduc" src="./assets/seduc-colorida.png" alt="SEDUC-AM" /></div>
+        <h1 class="cover-title">
+          <span class="split">Portfólio de soluções</span><br/>
+          <span class="split serif">tecnológicas.</span>
+        </h1>
+        <div class="triad mono">
+          <span class="t t1">Passado</span><i class="arrow"><b></b></i>
+          <span class="t t2">Presente</span><i class="arrow"><b></b></i>
+          <span class="t t3">Futuro</span>
+        </div>
+        <svg class="waves" data-waves="capa" viewBox="0 0 2000 360" preserveAspectRatio="none"></svg>
+        <p class="cover-foot mono">Prestação de contas à alta gestão · Novembro de 2026</p>
+        <aside class="notes">Abertura. O trabalho da GETAG em três tempos: o que entregamos, o que estamos fazendo e o que vamos fazer.</aside>
+      </section>
+
+      <!-- ===================== 02 · TRÊS TEMPOS ===================== -->
+      <section data-id="tempos" data-era="Visão geral" class="s-tempos">
+        <div class="eyebrow mono"><span class="line"></span>Nosso trabalho em números</div>
+        <h2 class="title">
+          <span class="mask"><span class="w"><span class="counter" data-to="total">0</span> iniciativas</span></span>
+          <span class="mask"><span class="w serif">da nossa equipe.</span></span>
+        </h2>
+        <div class="units" id="units">
+          <div class="ugroup" data-group="passado">
+            <div class="ugrid"></div>
+            <div class="ulabel"><span class="era-tag mono">Passado</span><b class="counter" data-to="descontinuado">0</b><span>soluções que entregamos e que já cumpriram seu ciclo</span></div>
+          </div>
+          <div class="ugroup" data-group="presente">
+            <div class="ugrid"></div>
+            <div class="ulabel"><span class="era-tag mono">Presente</span><b><span class="counter" data-to="producao">0</span> <em>+</em> <span class="counter" data-to="andamento">0</span></b><span>em produção e em andamento · <span class="counter" data-to="atencao">0</span> paralisadas ou sem status</span></div>
+          </div>
+          <div class="ugroup" data-group="futuro">
+            <div class="ugrid"></div>
+            <div class="ulabel"><span class="era-tag mono">Futuro</span><b class="counter" data-to="futuro">0</b><span>entregas que já planejamos</span></div>
+          </div>
+        </div>
+        <aside class="notes">Cada ponto é uma solução do portfólio da GETAG, colorida pelo status.</aside>
+      </section>
+
+      <!-- ===================== 03 · CAPÍTULO PASSADO ===================== -->
+      <section data-id="cap1" data-kind="chapter" data-era="Passado" class="s-chapter c-passado">
+        <svg class="waves" data-waves="chapter" viewBox="0 0 2000 300" preserveAspectRatio="none"></svg>
+        <svg class="bignum" viewBox="0 0 900 600"><text x="880" y="500" text-anchor="end">01</text></svg>
+        <div class="eyebrow mono"><span class="line"></span>01 · Passado</div>
+        <h2 class="chapter-title">
+          <span class="mask"><span class="w">De onde</span></span><br/>
+          <span class="mask"><span class="w serif">partimos.</span></span>
+        </h2>
+        <p class="chapter-sub">As demandas que chegaram até nós e o que entregamos.</p>
+      </section>
+
+      <!-- ===================== 04 · CENÁRIO ANTES ===================== -->
+      <section data-id="passado" data-era="Passado" class="s-passado">
+        <div class="eyebrow mono"><span class="line"></span>As demandas que recebemos</div>
+        <h1 class="headline">
+          <span class="mask"><span class="w">Informação</span></span>
+          <span class="mask"><span class="w">dispersa,</span></span><br/>
+          <span class="mask"><span class="w serif">processos</span></span>
+          <span class="mask"><span class="w serif">manuais.</span></span>
+        </h1>
+        <p class="lede">Cada cartão é uma demanda que recebemos e o sistema que entregamos para resolvê-la.</p>
+        <div class="chips">
+          <div class="chip" data-depth="0.9" style="--x:1330px;--y:150px"><b>Dashboards por e-mail</b><small>sem controle de acesso</small><em>→ SISPAGE</em></div>
+          <div class="chip" data-depth="0.5" style="--x:1440px;--y:310px"><b>Google Forms e planilhas</b><small>baixa governança de dados</small><em>→ GCO</em></div>
+          <div class="chip" data-depth="1.2" style="--x:1300px;--y:470px"><b>Cartões-resposta por barco</b><small>logística física e fluvial</small><em>→ AVAM</em></div>
+          <div class="chip" data-depth="0.7" style="--x:1460px;--y:630px"><b>Um login por sistema</b><small>múltiplas credenciais</small><em>→ Autenticador</em></div>
+          <div class="chip" data-depth="1.0" style="--x:1320px;--y:790px"><b>Admissão em Excel</b><small>processo manual e lento</small><em>→ Admissional PSS</em></div>
+        </div>
+        <aside class="notes">Papel, formulários soltos, dependência de terceiros e acesso sem controle.</aside>
+      </section>
+
+      <!-- ===================== 05 · CICLO ===================== -->
+      <section data-id="ciclo" data-era="Passado" class="s-ciclo">
+        <div class="eyebrow mono"><span class="line"></span>Entregamos e renovamos</div>
+        <h2 class="title">
+          <span class="mask"><span class="w">Dez soluções</span></span><br/>
+          <span class="mask"><span class="w serif">cumpriram seu ciclo.</span></span>
+        </h2>
+        <div class="ratio">
+          <div class="ratio-num"><span class="counter" data-to="descPainel">0</span><small>/10</small></div>
+          <p>eram painéis Power BI de 2024–2025. Renovamos esses temas em painéis novos em 2026.</p>
+        </div>
+        <div class="evolve">
+          <div class="ev"><span class="old">Rendimento Escolar</span><i></i><span class="new">Painel Estratégico do Rendimento Escolar</span></div>
+          <div class="ev"><span class="old">Emendas DETIN</span><i></i><span class="new">Controle e Monitoramento de Execução</span></div>
+        </div>
+        <div class="ledger mono">
+          <div class="lrow head"><span>Solução</span><span>Tipo</span><span>Última versão</span></div>
+          <div class="lrow pbi"><span>Acompanhamento Escolar – Notas</span><span>Painel</span><span>2024</span></div>
+          <div class="lrow pbi"><span>Pesquisa de Avaliação Pedagógica</span><span>Painel</span><span>2024</span></div>
+          <div class="lrow pbi"><span>CEPAN Digital</span><span>Painel</span><span>2024</span></div>
+          <div class="lrow pbi"><span>ICMS Dados Educacionais</span><span>Painel</span><span>2024</span></div>
+          <div class="lrow pbi hl"><span>Rendimento Escolar</span><span>Painel</span><span>2024</span></div>
+          <div class="lrow pbi"><span>Prestação de Contas – Convênios</span><span>Painel</span><span>2025</span></div>
+          <div class="lrow pbi hl"><span>Emendas Parlamentares – DETIN</span><span>Painel</span><span>2025</span></div>
+          <div class="lrow"><span>Automail</span><span>Web</span><span>—</span></div>
+          <div class="lrow"><span>Portal GEO</span><span>Web</span><span>—</span></div>
+          <div class="lrow"><span>Portal GEAM</span><span>Web</span><span>—</span></div>
+        </div>
+        <aside class="notes">Descontinuar não é perda: 7 dos 10 eram painéis cujos temas foram renovados.</aside>
+      </section>
+
+      <!-- ===================== 06 · CAPÍTULO PRESENTE ===================== -->
+      <section data-id="cap2" data-kind="chapter" data-era="Presente" class="s-chapter c-presente">
+        <svg class="waves" data-waves="chapter" viewBox="0 0 2000 300" preserveAspectRatio="none"></svg>
+        <svg class="bignum" viewBox="0 0 900 600"><text x="880" y="500" text-anchor="end">02</text></svg>
+        <div class="eyebrow mono"><span class="line"></span>02 · Presente</div>
+        <h2 class="chapter-title">
+          <span class="mask"><span class="w">Onde</span></span><br/>
+          <span class="mask"><span class="w serif">estamos.</span></span>
+        </h2>
+        <p class="chapter-sub">O que mantemos em uso, o que estamos construindo e o que monitoramos.</p>
+      </section>
+
+      <!-- ===================== 07 · 49 EM PRODUÇÃO ===================== -->
+      <section data-id="presente" data-era="Presente" class="s-presente">
+        <div class="eyebrow mono"><span class="line"></span>O que mantemos em produção</div>
+        <div class="hero-num">
+          <div class="big"><span class="counter" data-to="producao">0</span></div>
+          <div class="big-label">
+            <span class="mask"><span class="w">soluções</span></span>
+            <span class="mask"><span class="w serif">em produção</span></span>
+          </div>
+          <p class="sub"><b><span class="counter" data-to="prodPct">0</span>%</b> das <b class="counter" data-to="total">0</b> iniciativas já estão em uso ·
+            <b><span class="counter" data-to="prod2026Pct">0</span>%</b> delas (<span class="counter" data-to="prod2026">0</span>) ganharam versão nova em 2026</p>
+        </div>
+        <div class="donut-wrap">
+          <svg class="donut" viewBox="0 0 400 400" id="donut"></svg>
+          <div class="donut-center mono"><span class="counter" data-to="total">0</span><small>portfólio</small></div>
+          <ul class="legend" id="legend"></ul>
+        </div>
+        <div class="types" id="types"></div>
+        <aside class="notes">Das 49 em produção: 24 aplicações web, 21 painéis, 3 de geoprocessamento e 1 app.</aside>
+      </section>
+
+      <!-- ===================== 08 · FRENTES ===================== -->
+      <section data-id="frentes" data-era="Presente" class="s-frentes">
+        <div class="eyebrow mono"><span class="line"></span>O que entregamos</div>
+        <h2 class="title one">
+          <span class="mask"><span class="w">Quatro frentes,</span></span>
+          <span class="mask"><span class="w serif">um ecossistema.</span></span>
+        </h2>
+        <div class="cols">
+          <div class="col">
+            <div class="col-idx mono">01</div><h3>Avaliação e ensino</h3>
+            <ul><li>AVAM Web</li><li>App AVAM Android</li><li>AVAM Unificado</li><li>Moodle CEPAN Digital</li></ul>
+            <p class="out">Cartões lidos pelo celular, sem transporte físico nem correção terceirizada.</p>
+          </div>
+          <div class="col">
+            <div class="col-idx mono">02</div><h3>Gestão de pessoas</h3>
+            <ul><li>Admissional PSS</li><li>PSS Bolsa Mais Professores</li><li>Valida Folha RH</li><li>SISDETS</li><li>Férias e Banco de Horas</li></ul>
+            <p class="out">Admissão e conferência da folha mais rápidas e seguras.</p>
+          </div>
+          <div class="col">
+            <div class="col-idx mono">03</div><h3>Logística e infraestrutura</h3>
+            <ul><li>GAE – Alimentação Escolar</li><li>GAE Escola</li><li>GPTEC</li><li>SIRESC – Ranking</li><li>Compras</li></ul>
+            <p class="out">Distribuição e investimentos guiados por dados.</p>
+          </div>
+          <div class="col">
+            <div class="col-idx mono">04</div><h3>Dados, acesso e segurança</h3>
+            <ul><li>Autenticador e Autorizador</li><li>Portal de Sistemas</li><li>SISPAGE</li><li>GCO – Coleta de Dados</li><li>21 painéis analíticos</li></ul>
+            <p class="out">Acesso único, controle por perfil e rastreabilidade.</p>
+          </div>
+        </div>
+        <aside class="notes">Objetivos e benefícios de cada solução entregue pela equipe.</aside>
+      </section>
+
+      <!-- ===================== 09 · EM CURSO ===================== -->
+      <section data-id="curso" data-era="Presente" class="s-curso">
+        <div class="eyebrow mono"><span class="line"></span>O que estamos fazendo agora</div>
+        <h2 class="title one">
+          <span class="mask"><span class="w"><span class="counter" data-to="andamento">0</span> em curso,</span></span>
+          <span class="mask"><span class="w serif"><span class="counter" data-to="paralisado">0</span> paralisadas.</span></span>
+        </h2>
+        <div class="board">
+          <div class="lane lane-dev">
+            <div class="lane-h mono"><span>Desenvolvimento</span><b>8</b></div>
+            <div class="cards two">
+              <div class="kc">Provão Digital</div><div class="kc">Admissional Concursos</div>
+              <div class="kc">API Gateway</div><div class="kc">Política Nac. Ensino Médio</div>
+              <div class="kc">Selo Escola Antirracista</div><div class="kc">Automação de Cargas Vagas</div>
+              <div class="kc">App GAE Estoque Escola</div><div class="kc">SIGEFCON – Formação</div>
+            </div>
+          </div>
+          <div class="lane">
+            <div class="lane-h mono"><span>Homologação</span><b>1</b></div>
+            <div class="cards"><div class="kc">Moodle CEMEAM</div></div>
+          </div>
+          <div class="lane">
+            <div class="lane-h mono"><span>Aguardando</span><b>2</b></div>
+            <div class="cards"><div class="kc">App AVAM iOS<small>loja</small></div><div class="kc">PSS Diversidade Indígena<small>edital</small></div></div>
+          </div>
+          <div class="lane lane-warn">
+            <div class="lane-h mono"><span>Paralisadas · sem status</span><b>6</b></div>
+            <div class="cards">
+              <div class="kc stop">SME Digital – Demandas</div><div class="kc stop">App GPTEC</div>
+              <div class="kc ghost">Programa das Adolescências</div><div class="kc ghost">Monitoramento Ações R3G</div>
+              <div class="kc ghost">Estudos Espaciais</div><div class="kc ghost">Escolas em Risco Ambiental</div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">Decidir se SME Digital e App GPTEC são retomados ou encerrados.</aside>
+      </section>
+
+      <!-- ===================== 10 · RISCO ===================== -->
+      <section data-id="risco" data-era="Presente" class="s-risco">
+        <div class="eyebrow mono"><span class="line"></span>Risco que monitoramos</div>
+        <h2 class="title">
+          <span class="mask"><span class="w">Tecnologia</span></span><br/>
+          <span class="mask"><span class="w serif">sem suporte.</span></span>
+        </h2>
+        <div class="alert-num"><span class="counter" data-to="semSuporte">0</span><small>/<span class="counter" data-to="comVersao">0</span></small></div>
+        <p class="alert-cap">sistemas com versão declarada usam ao menos um componente que já não recebe correções de segurança</p>
+
+        <div class="eol">
+          <div class="axis"><div class="axis-fill"></div></div>
+          <div class="playhead"><span class="mono">hoje · nov/2026</span></div>
+          <div class="mk up" data-date="2025-02"><b>Laravel 8–10</b><span class="mono">fev/2025</span></div>
+          <div class="mk down" data-date="2025-04"><b>Node.js 18</b><span class="mono">abr/2025</span></div>
+          <div class="mk up" data-date="2026-03"><b>Laravel 11</b><span class="mono">mar/2026</span></div>
+          <div class="mk down" data-date="2026-04"><b>Node.js 20</b><span class="mono">abr/2026</span></div>
+          <div class="mk up safe" data-date="2027-02"><b>Laravel 12</b><span class="mono">fev/2027</span></div>
+          <div class="years mono"><span data-date="2025-01">2025</span><span data-date="2026-01">2026</span><span data-date="2027-01">2027</span></div>
+        </div>
+
+        <div class="facts">
+          <div class="fact"><b><span class="counter" data-to="laravelLegado">0</span></b><div><h4>sistemas em Laravel 8 a 11</h4><p>Só o SISPAGE usa Laravel 12, coberto até fev/2027.</p></div></div>
+          <div class="fact"><b><span class="counter" data-to="nodeLegado">0</span></b><div><h4>sistemas em Node.js 18 e 20</h4><p>Inclui Valida Folha RH, AVAM Web e Autorizador SEDUC.</p></div></div>
+        </div>
+        <p class="source mono">Fontes: inventário tecnológico da GETAG · laravel.com/docs/releases · cronograma oficial Node.js</p>
+        <aside class="notes">Todos os 19 sistemas com versão declarada têm ao menos um componente fora do suporte de segurança.</aside>
+      </section>
+
+      <!-- ===================== 11 · CAPÍTULO FUTURO ===================== -->
+      <section data-id="cap3" data-kind="chapter" data-era="Futuro" class="s-chapter c-futuro">
+        <svg class="waves" data-waves="chapter" viewBox="0 0 2000 300" preserveAspectRatio="none"></svg>
+        <svg class="bignum" viewBox="0 0 900 600"><text x="880" y="500" text-anchor="end">03</text></svg>
+        <div class="eyebrow mono"><span class="line"></span>03 · Futuro</div>
+        <h2 class="chapter-title">
+          <span class="mask"><span class="w">Para onde</span></span><br/>
+          <span class="mask"><span class="w serif">vamos.</span></span>
+        </h2>
+        <p class="chapter-sub">O que vamos entregar e como vamos preparar a base para isso.</p>
+      </section>
+
+      <!-- ===================== 12 · FRENTES FUTURAS ===================== -->
+      <section data-id="futuro" data-era="Futuro" class="s-futuro">
+        <div class="eyebrow mono"><span class="line"></span>O que vamos entregar</div>
+        <h1 class="headline small">
+          <span class="mask"><span class="w"><span class="counter" data-to="futuro">0</span> entregas</span></span><br/>
+          <span class="mask"><span class="w serif">em cinco frentes.</span></span>
+        </h1>
+        <p class="lede">+ <b class="counter" data-to="andamento">0</b> em andamento = <b class="counter" data-to="pipeline">0</b> no pipeline</p>
+        <div class="stage">
+          <svg class="rail" viewBox="0 0 1920 1080" preserveAspectRatio="none"><path id="railPath" d="" /></svg>
+          <div class="pillar" style="--px:110px;--py:610px"><div class="p-head"><span class="p-idx mono">01</span><b class="p-n">4</b></div><h3>Plataforma e segurança</h3>
+            <ul><li>CAPI – catálogo de APIs</li><li>AuthBR – login Gov.br</li><li>Observabilidade + backups</li><li>Migração de 7 sistemas</li></ul></div>
+          <div class="pillar" style="--px:450px;--py:570px"><div class="p-head"><span class="p-idx mono">02</span><b class="p-n">4</b></div><h3>Gestão de pessoas</h3>
+            <ul><li>Admissional PSS · 3 públicos</li><li>ADMITES – tramitação</li></ul></div>
+          <div class="pillar" style="--px:790px;--py:530px"><div class="p-head"><span class="p-idx mono">03</span><b class="p-n">3</b></div><h3>Dados e transparência</h3>
+            <ul><li>Portal de Dados Abertos</li><li>Portal Saber Mais</li><li>Sistema R3G-NIG</li></ul></div>
+          <div class="pillar" style="--px:1130px;--py:490px"><div class="p-head"><span class="p-idx mono">04</span><b class="p-n">2</b></div><h3>Logística escolar</h3>
+            <ul><li>GAE 3.0</li><li>Solicitação geral das escolas</li></ul></div>
+          <div class="pillar" style="--px:1470px;--py:450px"><div class="p-head"><span class="p-idx mono">05</span><b class="p-n">1</b></div><h3>Avaliação</h3>
+            <ul><li>App Provão Digital</li><li>Leitura do cartão-resposta</li></ul></div>
+        </div>
+        <aside class="notes">14 entregas futuras em cinco frentes, puxadas por plataforma e segurança.</aside>
+      </section>
+
+      <!-- ===================== 13 · PRIORIDADES ===================== -->
+      <section data-id="prioridades" data-era="Futuro" class="s-prioridades">
+        <div class="eyebrow mono"><span class="line"></span>Nossos compromissos</div>
+        <h2 class="title one">
+          <span class="mask"><span class="w">Cinco</span></span>
+          <span class="mask"><span class="w serif">compromissos.</span></span>
+        </h2>
+        <div class="prio">
+          <div class="spine"></div>
+          <div class="pr"><span class="pn serif">1</span><div><h3>Modernizar nossa base tecnológica</h3><p>Vamos antecipar a migração já prevista, começando por folha, admissão e autorização de acesso.</p></div></div>
+          <div class="pr"><span class="pn serif">2</span><div><h3>Consolidar a plataforma comum</h3><p>Todo sistema novo vai nascer sobre API Gateway/CAPI, login Gov.br, observabilidade e backups.</p></div></div>
+          <div class="pr"><span class="pn serif">3</span><div><h3>Concluir antes de abrir novas frentes</h3><p>Fechar as <span class="counter" data-to="andamento">0</span> entregas em curso e definir com a gestão se SME Digital e App GPTEC serão retomados.</p></div></div>
+          <div class="pr"><span class="pn serif">4</span><div><h3>Fortalecer a gestão do portfólio</h3><p>Manter status e versão de cada solução sempre atualizados: hoje <span class="counter" data-to="semStatus">0</span> estão sem status e <span class="counter" data-to="semAno">0</span> sem ano de versão registrado.</p></div></div>
+          <div class="pr"><span class="pn serif">5</span><div><h3>Medir e comunicar impacto</h3><p>Apresentar indicadores por sistema: tempo de admissão, prazo de resultados do AVAM, usuários ativos.</p></div></div>
+        </div>
+        <aside class="notes">Compromissos que a equipe assume a partir deste balanço.</aside>
+      </section>
+
+      <!-- ===================== 14 · SÍNTESE ===================== -->
+      <section data-id="sintese" data-era="Síntese" class="s-sintese">
+        <div class="eyebrow mono"><span class="line"></span>Em síntese</div>
+        <div class="tri">
+          <div class="beam"></div>
+          <div class="tc t-pas"><span class="mono">Passado</span><p>Respondemos a demandas manuais e dispersas com <b>sistemas próprios</b>.</p></div>
+          <div class="tc t-pre"><span class="mono">Presente</span><p><b><span class="counter" data-to="producao">0</span> soluções em uso</b>, mantidas e evoluídas pela equipe.</p></div>
+          <div class="tc t-fut"><span class="mono">Futuro</span><p><b><span class="counter" data-to="futuro">0</span> novas entregas</b> planejadas sobre uma plataforma comum.</p></div>
+        </div>
+        <div class="signoff"><span class="split">Obrigado.</span></div>
+        <svg class="waves" data-waves="sintese" viewBox="0 0 2000 260" preserveAspectRatio="none"></svg>
+        <div class="end-logos"><img class="govam" src="./assets/govam-colorida.png" alt="Governo do Amazonas" />
+          <div class="row"><img class="seduc" src="./assets/seduc-colorida.png" alt="SEDUC-AM" /><i></i><img class="infos" src="./assets/infos.png" alt="Contato SEDUC-AM" /></div></div>
+        <p class="cover-foot mono">GETAG · SEDUC-AM · Novembro de 2026</p>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="hint mono">← → navegar · F tela cheia · S notas</div>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

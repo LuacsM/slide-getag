@@ -1,0 +1,8 @@
+node_modules/
+dist/
+shots*/
+# documentos internos usados como fonte (não publicar)
+data/*.xlsx
+data/*.pdf
+data/*.txt
+PAPELARIA/
