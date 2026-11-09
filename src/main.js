@@ -133,10 +133,11 @@ $('svg.waves').forEach((svg, si) => {
 /* ------------------------------------------------------------------ */
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function countUp(el, to, duration = 1.8, ease = 'power3.out') {
+function countUp(el, to, duration = 1.8, ease = 'power3.out', pad = 0) {
   const o = { v: 0 };
-  el.textContent = '0';
-  return gsap.to(o, { v: to, duration, ease, onUpdate: () => (el.textContent = Math.round(o.v)) });
+  const fmt = (v) => String(Math.round(v)).padStart(pad, '0');
+  el.textContent = fmt(0);
+  return gsap.to(o, { v: to, duration, ease, onUpdate: () => (el.textContent = fmt(o.v)) });
 }
 function counters(root, tl, at, dur = 2) {
   $('.counter', root).forEach((el) => tl.add(countUp(el, VALUES[el.dataset.to], dur), at));
@@ -314,7 +315,7 @@ const choreo = {
         tl.fromTo($('.p', card), { scale: 0, opacity: 0, transformOrigin: '50% 50%' },
           { scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(2.6)', stagger: 0.09 }, at + 0.2);
         const n = card.querySelector('.a-n');
-        tl.add(countUp(n, +n.dataset.v, 1.1), at + 0.3);
+        tl.add(countUp(n, +n.dataset.v, 1.1, 'power3.out', 2), at + 0.3); // 2 dígitos: 09, 03…
       });
       // depois, cada ilustração ganha vida com um movimento próprio
       tl.add(() => {
