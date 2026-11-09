@@ -180,6 +180,13 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 .chip::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 3px; background: var(--rose); border-radius: 3px; }
 .chip b { font-size: 27px; font-weight: 650; letter-spacing: -0.01em; color: var(--navy); }
 .chip small { font-size: 19px; color: var(--muted); }
+.chip { width: 500px; box-sizing: border-box; padding: 16px 26px 18px 28px; gap: 4px; }
+.chip .c-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.chip .c-top em { margin-top: 0; }
+.chip .c-tag { font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose); font-weight: 700; }
+.chip b { font-size: 23px; line-height: 1.2; }
+.chip small { font-size: 18px; line-height: 1.35; }
+.chip small i { font-style: normal; font-family: var(--mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); font-weight: 700; margin-right: 8px; }
 .chip em { font-style: normal; font-family: var(--mono); font-size: 16px; font-weight: 600; letter-spacing: 0.12em; color: var(--dgreen); margin-top: 6px; text-transform: uppercase; }
 
 /* ---------- 05 · CICLO ---------- */
@@ -202,7 +209,7 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 .lrow span:nth-child(2), .lrow span:nth-child(3) { color: var(--muted); }
 .lrow.hl { background: linear-gradient(90deg, rgba(34, 76, 156, 0.08), transparent); }
 .lrow.hl span:first-child { color: var(--blue); font-weight: 600; }
-.lrow .strike { position: absolute; left: 28px; right: 28px; top: 50%; height: 1px; background: rgba(36, 48, 94, 0.35); transform-origin: left; pointer-events: none; }
+.lrow .strike { position: absolute; left: 28px; right: 28px; bottom: 0; top: auto; height: 2px; background: linear-gradient(90deg, var(--green), rgba(34, 163, 60, 0.15)); transform-origin: left; pointer-events: none; }
 
 /* ---------- 07 · PRESENTE ---------- */
 .hero-num { position: absolute; left: 124px; top: 230px; }
@@ -289,18 +296,19 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 .kc.ghost { border: 1px dashed rgba(36, 48, 94, 0.25); background: transparent; color: var(--muted); box-shadow: none; }
 
 /* ---------- 10 · RISCO ---------- */
-.s-risco .eyebrow, .s-risco .title .serif { color: var(--rose); }
+/* tom neutro: ciclo de vida é rotina de segurança, não alarme */
+.s-risco .eyebrow, .s-risco .title .serif { color: var(--blue); }
 .s-risco .title { font-size: 92px; }
 .alert-num {
   position: absolute; left: 118px; top: 460px; font-size: 230px; line-height: 0.85; font-weight: 700; letter-spacing: -0.07em;
-  background: linear-gradient(170deg, var(--navy) 10%, var(--rose) 90%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  background: linear-gradient(170deg, var(--navy) 10%, var(--sky) 90%); -webkit-background-clip: text; background-clip: text; color: transparent;
   font-variant-numeric: tabular-nums;
 }
 .alert-num small { font-size: 100px; letter-spacing: -0.04em; }
 .alert-cap { position: absolute; left: 130px; top: 730px; width: 560px; margin: 0; font-size: 25px; line-height: 1.45; color: var(--muted); }
 .eol { position: absolute; left: 830px; right: 140px; top: 330px; height: 330px; }
 .axis { position: absolute; left: 0; right: 0; top: 160px; height: 3px; background: rgba(36, 48, 94, 0.1); border-radius: 3px; }
-.axis-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: linear-gradient(90deg, rgba(201, 55, 79, 0.35), var(--rose)); border-radius: 3px; }
+.axis-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: linear-gradient(90deg, rgba(0, 147, 211, 0.3), var(--blue)); border-radius: 3px; }
 .playhead { position: absolute; top: 30px; height: 270px; width: 0; border-left: 2px dashed rgba(36, 48, 94, 0.45); }
 .playhead span { position: absolute; left: 10px; top: -6px; white-space: nowrap; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); font-weight: 700; }
 .mk { position: absolute; top: 0; width: 0; height: 100%; }
@@ -310,16 +318,16 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 .mk span { font-size: 15px; letter-spacing: 0.12em; color: var(--muted); font-weight: 600; }
 .mk.up b { bottom: 214px; } .mk.up span { bottom: 192px; }
 .mk.down b { top: 196px; } .mk.down span { top: 230px; }
-.mk.dead::before { border-color: var(--rose); background: var(--rose); box-shadow: 0 0 0 6px rgba(201, 55, 79, 0.15); }
-.mk.dead span { color: var(--rose); }
+.mk.dead::before { border-color: var(--gold); background: var(--gold); box-shadow: 0 0 0 6px rgba(227, 169, 11, 0.18); }
+.mk.dead span { color: #a8770a; }
 .mk.safe::before { border-color: var(--green); }
 .mk.safe.lit::before { background: var(--green); box-shadow: 0 0 0 6px rgba(34, 163, 60, 0.15); }
 .mk.safe span { color: var(--dgreen); }
 .years { position: absolute; left: 0; right: 0; top: 300px; height: 20px; font-size: 14px; letter-spacing: 0.2em; color: var(--dim); }
 .years span { position: absolute; transform: translateX(-50%); }
 .facts { position: absolute; left: 830px; right: 140px; top: 730px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.fact { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: start; padding-top: 22px; border-top: 2px solid rgba(201, 55, 79, 0.3); }
-.fact > b { font-size: 76px; line-height: 0.9; font-weight: 650; letter-spacing: -0.04em; color: var(--rose); font-variant-numeric: tabular-nums; }
+.fact { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: start; padding-top: 22px; border-top: 2px solid rgba(34, 76, 156, 0.25); }
+.fact > b { font-size: 76px; line-height: 0.9; font-weight: 650; letter-spacing: -0.04em; color: var(--blue); font-variant-numeric: tabular-nums; }
 .fact h4 { margin: 4px 0 8px; font-size: 24px; font-weight: 650; color: var(--navy); }
 .fact p { margin: 0; font-size: 19px; line-height: 1.4; color: var(--muted); }
 .source { position: absolute; left: 830px; top: 960px; margin: 0; font-size: 13px; letter-spacing: 0.1em; color: var(--dim); }
@@ -397,7 +405,7 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 /* ---------- RISCOS · PROPOSTA ---------- */
 .s-nuvem .eyebrow, .s-nuvem .title .serif { color: var(--dgreen); }
 .s-nuvem .lede { top: 470px; max-width: 760px; font-size: 28px; }
-.answers { position: absolute; left: 130px; top: 610px; width: 780px; margin: 0; padding: 0; list-style: none; display: grid; gap: 26px; }
+.answers { position: absolute; left: 130px; top: 635px; width: 780px; margin: 0; padding: 0; list-style: none; display: grid; gap: 22px; }
 .answers li { display: grid; grid-template-columns: 40px 1fr; gap: 20px; align-items: start; }
 .answers li i { position: relative; width: 34px; height: 34px; border-radius: 50%; background: var(--green); box-shadow: 0 8px 18px -6px rgba(34, 163, 60, 0.6); margin-top: 2px; }
 .answers li i::after { content: ""; position: absolute; left: 12px; top: 7px; width: 8px; height: 15px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
@@ -405,6 +413,14 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 .answers span { display: block; margin-top: 4px; font-size: 19px; color: var(--muted); }
 .cloud { position: absolute; left: 1010px; top: 300px; width: 780px; }
 .from { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.fb span { display: block; margin-bottom: 6px; font-size: 12px; letter-spacing: 0.3em; opacity: 0.8; }
+.fb small { display: block; margin-top: 6px; font-size: 13px; letter-spacing: 0.08em; text-transform: none; font-weight: 500; opacity: 0.85; }
+.fb.stay { border: 2px solid rgba(34, 76, 156, 0.35); background: rgba(34, 76, 156, 0.06); color: var(--blue) !important; }
+.links path.l-stay { stroke: var(--blue); stroke-dasharray: 6 8; }
+.link-labels { position: relative; height: 0; }
+.link-labels span { position: absolute; top: -70px; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+.link-labels span:first-child { left: 120px; color: var(--blue); }
+.link-labels span:last-child { right: 92px; color: var(--dgreen); }
 .fb { padding: 18px 20px; text-align: center; border-radius: 14px; border: 2px dashed rgba(201, 55, 79, 0.45); color: #8e1f33; background: #fff6f7; font-family: var(--mono); font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
 .links { display: block; width: 780px; height: 110px; overflow: visible; }
 .links path { fill: none; stroke: var(--green); stroke-width: 3; stroke-linecap: round; }

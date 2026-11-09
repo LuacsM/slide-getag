@@ -378,7 +378,8 @@ const choreo = {
       const paths = $('.links path', root);
       paths.forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.dataset.l = L; });
       tl.fromTo(paths, { strokeDashoffset: (i, p) => +p.dataset.l }, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' }, 1.3);
-      tl.to(fbs, { opacity: 0.45, filter: 'grayscale(1)', duration: 0.8 }, 1.6);
+      tl.to(root.querySelector('.fb.move'), { opacity: 0.45, filter: 'grayscale(1)', duration: 0.8 }, 1.6);
+      tl.fromTo($('.link-labels span', root), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.15 }, 1.9);
       tl.fromTo(root.querySelector('.cloud-card'), { opacity: 0, y: 60, scale: 0.94, filter: 'blur(12px)' },
         { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1.3, ease: 'expo.out' }, 2.0);
       tl.fromTo($('.layer', root), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: -0.18 }, 2.4);
@@ -568,7 +569,6 @@ const choreo = {
         } else {
           const at = start + T * Math.min(1, p / TODAY_PCT);
           tl.add(() => m.classList.add('dead'), at);
-          tl.to(m.querySelector('b'), { keyframes: { x: [0, -5, 5, -3, 0] }, duration: 0.35 }, at);
         }
       });
       tl.fromTo($('.fact', root), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.15 }, 3.4);
