@@ -5,6 +5,7 @@
 @import 'reveal.js/reset.css';
 @import 'reveal.js/reveal.css';
 @import '@fontsource-variable/inter';
+@import '@fontsource/inter/700.css';
 @import '@fontsource/instrument-serif/400.css';
 @import '@fontsource/instrument-serif/400-italic.css';
 @import '@fontsource-variable/jetbrains-mono';
@@ -154,8 +155,9 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 /* ---------- CAPÍTULOS ---------- */
 .s-chapter .waves { left: -40px; bottom: 30px; width: 2000px; height: 220px; }
 .s-chapter .bignum { position: absolute; right: 40px; top: 150px; width: 1150px; height: 767px; overflow: visible; }
-.s-chapter .bignum text {
-  font-family: var(--sans); font-size: 600px; font-weight: 700; letter-spacing: -40px;
+.s-chapter .bignum .glyph { fill-rule: evenodd; }
+.s-chapter .bignum text, .s-chapter .bignum .glyph {
+  font-family: 'Inter', var(--sans); font-size: 600px; font-weight: 700; letter-spacing: -40px;
   fill: currentColor; fill-opacity: 0; stroke: currentColor; stroke-width: 2.5; stroke-dasharray: 2600; stroke-dashoffset: 2600;
 }
 .s-chapter .eyebrow { top: 300px; }
@@ -297,19 +299,19 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 .kc.ghost { border: 1px dashed rgba(36, 48, 94, 0.25); background: transparent; color: var(--muted); box-shadow: none; }
 
 /* ---------- 10 · RISCO ---------- */
-/* tom neutro: ciclo de vida é rotina de segurança, não alarme */
-.s-risco .eyebrow, .s-risco .title .serif { color: var(--blue); }
+/* risco conhecido e controlado: tons de vermelho da seção, sem efeito de alarme */
+.s-risco .eyebrow, .s-risco .title .serif { color: var(--rose); }
 .s-risco .title { font-size: 92px; }
 .alert-num {
   position: absolute; left: 118px; top: 460px; font-size: 230px; line-height: 0.85; font-weight: 700; letter-spacing: -0.07em;
-  background: linear-gradient(170deg, var(--navy) 10%, var(--sky) 90%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  background: linear-gradient(170deg, var(--navy) 10%, var(--rose) 90%); -webkit-background-clip: text; background-clip: text; color: transparent;
   font-variant-numeric: tabular-nums;
 }
 .alert-num small { font-size: 100px; letter-spacing: -0.04em; }
 .alert-cap { position: absolute; left: 130px; top: 730px; width: 560px; margin: 0; font-size: 25px; line-height: 1.45; color: var(--muted); }
 .eol { position: absolute; left: 830px; right: 140px; top: 330px; height: 330px; }
 .axis { position: absolute; left: 0; right: 0; top: 160px; height: 3px; background: rgba(36, 48, 94, 0.1); border-radius: 3px; }
-.axis-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: linear-gradient(90deg, rgba(0, 147, 211, 0.3), var(--blue)); border-radius: 3px; }
+.axis-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: linear-gradient(90deg, rgba(201, 55, 79, 0.3), var(--rose)); border-radius: 3px; }
 .playhead { position: absolute; top: 30px; height: 270px; width: 0; border-left: 2px dashed rgba(36, 48, 94, 0.45); }
 .playhead span { position: absolute; left: 10px; top: -6px; white-space: nowrap; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); font-weight: 700; }
 .mk { position: absolute; top: 0; width: 0; height: 100%; }
@@ -319,16 +321,16 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 .mk span { font-size: 15px; letter-spacing: 0.12em; color: var(--muted); font-weight: 600; }
 .mk.up b { bottom: 214px; } .mk.up span { bottom: 192px; }
 .mk.down b { top: 196px; } .mk.down span { top: 230px; }
-.mk.dead::before { border-color: var(--gold); background: var(--gold); box-shadow: 0 0 0 6px rgba(227, 169, 11, 0.18); }
-.mk.dead span { color: #a8770a; }
+.mk.dead::before { border-color: var(--rose); background: var(--rose); box-shadow: 0 0 0 6px rgba(201, 55, 79, 0.15); }
+.mk.dead span { color: var(--rose); }
 .mk.safe::before { border-color: var(--green); }
 .mk.safe.lit::before { background: var(--green); box-shadow: 0 0 0 6px rgba(34, 163, 60, 0.15); }
 .mk.safe span { color: var(--dgreen); }
 .years { position: absolute; left: 0; right: 0; top: 300px; height: 20px; font-size: 14px; letter-spacing: 0.2em; color: var(--dim); }
 .years span { position: absolute; transform: translateX(-50%); }
 .facts { position: absolute; left: 830px; right: 140px; top: 730px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.fact { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: start; padding-top: 22px; border-top: 2px solid rgba(34, 76, 156, 0.25); }
-.fact > b { font-size: 76px; line-height: 0.9; font-weight: 650; letter-spacing: -0.04em; color: var(--blue); font-variant-numeric: tabular-nums; }
+.fact { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: start; padding-top: 22px; border-top: 2px solid rgba(201, 55, 79, 0.3); }
+.fact > b { font-size: 76px; line-height: 0.9; font-weight: 650; letter-spacing: -0.04em; color: var(--rose); font-variant-numeric: tabular-nums; }
 .fact h4 { margin: 4px 0 8px; font-size: 24px; font-weight: 650; color: var(--navy); }
 .fact p { margin: 0; font-size: 19px; line-height: 1.4; color: var(--muted); }
 .source { position: absolute; left: 830px; top: 960px; margin: 0; font-size: 13px; letter-spacing: 0.1em; color: var(--dim); }

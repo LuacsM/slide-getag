@@ -221,7 +221,7 @@ const idle = new Map();
 const chapter = {
   enter(root) {
     const tl = gsap.timeline();
-    const num = root.querySelector('.bignum text');
+    const num = root.querySelectorAll('.bignum text, .bignum .glyph');
     tl.fromTo(num, { strokeDashoffset: 2600, fillOpacity: 0 }, { strokeDashoffset: 0, duration: 2.4, ease: 'power2.inOut' }, 0)
       .to(num, { fillOpacity: 0.07, duration: 1.2, ease: 'power2.out' }, 1.9)
       .fromTo(root.querySelector('.bignum'), { scale: 1.12, x: 60, transformOrigin: '100% 50%' }, { scale: 1, x: 0, duration: 3.2, ease: 'expo.out' }, 0);
