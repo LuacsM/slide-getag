@@ -248,8 +248,9 @@ html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); 
 }
 .ill { width: 158px; height: 158px; overflow: visible; }
 .ill .o { stroke: var(--navy); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
-.a-h { display: flex; align-items: baseline; gap: 14px; }
-.a-n { font-size: 54px; line-height: 1; font-weight: 700; letter-spacing: -0.04em; color: var(--blue); font-variant-numeric: tabular-nums; }
+.a-txt { align-self: start; padding-top: 18px; }
+.a-h { display: flex; align-items: center; gap: 12px; min-height: 60px; }
+.a-n { font-size: 54px; line-height: 1; font-weight: 700; letter-spacing: -0.04em; color: var(--blue); font-variant-numeric: tabular-nums; flex: none; width: 68px; }
 .area h3 { margin: 0; font-size: 26px; line-height: 1.12; font-weight: 650; letter-spacing: -0.02em; color: var(--navy); }
 .area p { margin: 12px 0 0; font-size: 18px; line-height: 1.4; color: var(--muted); }
 
