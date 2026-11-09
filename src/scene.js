@@ -65,11 +65,11 @@ const frag = /* glsl */ `
     float d = length(c);
     if (d > 0.5) discard;
     float glow = smoothstep(0.5, 0.0, d);
-    glow = pow(glow, 1.8);
+    glow = pow(glow, 1.2);
     vec3 chaos = mix(cChaos, cChaos2, step(0.93, vRand));
     vec3 col = mix(mix(chaos, cOrder, vA), cFuture, vB);
     col = mix(col, cAlert, uAlert * (0.55 + vRand*0.45));
-    gl_FragColor = vec4(col, glow * uOpacity * (0.35 + vRand*0.65));
+    gl_FragColor = vec4(col, glow * uOpacity * (0.22 + vRand*0.5));
   }
 `;
 
@@ -142,9 +142,9 @@ const DEF = { o: 1, c: SPHERE_DONUT, k: 1, al: 0 };
 
 export function createScene(canvas) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance' });
-  renderer.setClearColor(0x05070d, 1);
+  renderer.setClearColor(0xf5f7fb, 1);
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x05070d, 0.02);
+  scene.fog = new THREE.FogExp2(0xf5f7fb, 0.022);
   const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 200);
 
   const { chaos, order, future, rand } = buildAttributes();
@@ -158,16 +158,16 @@ export function createScene(canvas) {
 
   const uniforms = {
     uA: { value: 0 }, uB: { value: 0 }, uTime: { value: 0 },
-    uSize: { value: 5.5 }, uCenter: { value: new THREE.Vector3(4.48, 2.09, -2) }, uScale: { value: 1 }, uAlert: { value: 0 },
-    cAlert: { value: new THREE.Color('#ff5a6e') }, uPixel: { value: 1 }, uOpacity: { value: 0 },
-    cChaos: { value: new THREE.Color('#6b7fa6') },
-    cChaos2: { value: new THREE.Color('#ff6b7d') },
-    cOrder: { value: new THREE.Color('#5ce1e6') },
-    cFuture: { value: new THREE.Color('#ffb547') },
+    uSize: { value: 4.6 }, uCenter: { value: new THREE.Vector3(4.48, 2.09, -2) }, uScale: { value: 1 }, uAlert: { value: 0 },
+    cAlert: { value: new THREE.Color('#c9374f') }, uPixel: { value: 1 }, uOpacity: { value: 0 },
+    cChaos: { value: new THREE.Color('#8b93ad') },
+    cChaos2: { value: new THREE.Color('#c9374f') },
+    cOrder: { value: new THREE.Color('#224c9c') },
+    cFuture: { value: new THREE.Color('#22a33c') },
   };
   const mat = new THREE.ShaderMaterial({
     vertexShader: vert, fragmentShader: frag, uniforms,
-    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    transparent: true, depthWrite: false, blending: THREE.NormalBlending,
   });
   const points = new THREE.Points(geo, mat);
   scene.add(points);

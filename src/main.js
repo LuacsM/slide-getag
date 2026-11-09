@@ -3,7 +3,6 @@ import Notes from 'reveal.js/plugin/notes';
 import gsap from 'gsap';
 import { createScene } from './scene.js';
 import data from './data.json';
-import './deck.css';
 
 /* ------------------------------------------------------------------ */
 /* dados derivados da planilha                                         */
@@ -34,11 +33,11 @@ const VALUES = {
 };
 
 const STATUS_SEGMENTS = [
-  { label: 'Em produção', v: S.producao, color: '#5ce1e6' },
-  { label: 'Em desenvolvimento ou homologação', v: S.andamento, color: '#2fc7a4' },
-  { label: 'Entrega futura', v: S.futuro, color: '#ffb547' },
-  { label: 'Descontinuadas', v: S.descontinuado, color: '#6b7fa6' },
-  { label: 'Paralisadas ou sem status', v: S.paralisado + S.sem_status, color: '#3a4256' },
+  { label: 'Em produção', v: S.producao, color: '#224c9c' },
+  { label: 'Em desenvolvimento ou homologação', v: S.andamento, color: '#0093d3' },
+  { label: 'Entrega futura', v: S.futuro, color: '#22a33c' },
+  { label: 'Descontinuadas', v: S.descontinuado, color: '#b6bdd0' },
+  { label: 'Paralisadas ou sem status', v: S.paralisado + S.sem_status, color: '#e39aa7' },
 ];
 const TYPES = [
   { label: 'Aplicações web', v: P.web || 0 },
@@ -68,7 +67,7 @@ const segs = STATUS_SEGMENTS.map((s) => {
   c.style.strokeDasharray = `0 ${C}`;
   c.style.strokeDashoffset = -acc;
   c.dataset.len = Math.max(len - GAP, 2);
-  if (s.color === '#5ce1e6') c.style.filter = 'drop-shadow(0 0 10px rgba(92,225,230,.55))';
+  if (s.color === '#224c9c') c.style.filter = 'drop-shadow(0 8px 14px rgba(34,76,156,.28))';
   segG.appendChild(c);
   acc += len;
   return c;
@@ -109,6 +108,23 @@ const T0 = new Date('2025-01-01'), T1 = new Date('2027-06-01'), TODAY = new Date
 const tpos = (d) => ((new Date(d) - T0) / (T1 - T0)) * 100;
 $('.eol [data-date]').forEach((el) => (el.style.left = `${tpos(el.dataset.date + '-01')}%`));
 const TODAY_PCT = tpos(TODAY);
+
+// ondas da marca: linhas finas que se cruzam (azul e verdes), como na papelaria SEDUC/GOVAM
+const WAVE_COLORS = ['#224c9c', '#0a7434', '#22a33c', '#5bb463'];
+$('svg.waves').forEach((svg, si) => {
+  const [, , W, H] = svg.getAttribute('viewBox').split(' ').map(Number);
+  const mid = H * 0.55;
+  svg.innerHTML = WAVE_COLORS.map((col, j) => {
+    const A = H * (0.16 + j * 0.06), f = (Math.PI * 2 * (1.1 + j * 0.18)) / W, ph = j * 1.7 + si * 0.9;
+    const tilt = (j % 2 ? -1 : 1) * H * 0.12;
+    let d = '';
+    for (let x = -60; x <= W + 60; x += 20) {
+      const y = mid + A * Math.sin(x * f + ph) + tilt * (x / W - 0.5) + H * 0.06 * Math.sin(x * f * 2.3 + ph * 2);
+      d += (d ? ' L ' : 'M ') + x.toFixed(0) + ' ' + y.toFixed(1);
+    }
+    return `<path d="${d}" stroke="${col}" opacity="${0.55 + j * 0.1}"/>`;
+  }).join('');
+});
 
 /* ------------------------------------------------------------------ */
 /* utilidades de animação                                              */
@@ -165,6 +181,18 @@ function genericExit(root) {
   return tl;
 }
 
+// ondas: desenho em traço e depois uma ondulação lenta contínua
+function wavesIn(root, tl, at = 0) {
+  const paths = $('.waves path', root);
+  if (!paths.length) return;
+  paths.forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.dataset.l = L; });
+  tl.fromTo(paths, { strokeDashoffset: (i, p) => +p.dataset.l }, { strokeDashoffset: 0, duration: 2.6, ease: 'power2.inOut', stagger: 0.18 }, at);
+  tl.add(() => {
+    const a = paths.map((p, i) => gsap.to(p, { x: (i % 2 ? -1 : 1) * 50, y: i % 2 ? 8 : -8, duration: 5 + i, ease: 'sine.inOut', yoyo: true, repeat: -1 }));
+    idle.set(root, [...(idle.get(root) || []), ...a]);
+  });
+}
+
 /* trilho do futuro: Catmull-Rom passando pelos marcadores de cada pilar */
 function buildRail(root) {
   const pts = $('.pillar', root).map((p) => [p.offsetLeft + 37, p.offsetTop + p.offsetHeight + 19]);
@@ -197,6 +225,7 @@ const chapter = {
     eyebrowIn(root, tl, 0.3);
     wordsIn(root, tl, 0.45);
     fadeUp(tl, root.querySelector('.chapter-sub'), 1.1);
+    wavesIn(root, tl, 0.4);
     return tl;
   },
   exit(root) {
@@ -204,6 +233,7 @@ const chapter = {
     tl.to(root.querySelector('.bignum'), { scale: 1.5, opacity: 0, filter: 'blur(16px)', duration: 0.9, ease: 'power3.in' }, 0);
     wordsOut(root, tl, 0);
     tl.to([root.querySelector('.eyebrow'), root.querySelector('.chapter-sub')], { opacity: 0, y: -20, duration: 0.5, ease: 'power2.in' }, 0);
+    tl.to(root.querySelector('.waves'), { opacity: 0, y: 40, duration: 0.7, ease: 'power2.in' }, 0);
     return tl;
   },
 };
@@ -220,20 +250,23 @@ const choreo = {
       const [t1, t2, t3] = $('.triad .t', root);
       const dots = $('.triad .arrow b', root);
       tl.fromTo(root.querySelector('.triad'), { opacity: 0 }, { opacity: 1, duration: 0.6 }, 1.3)
-        .fromTo(t1, { color: '#4a5266' }, { color: '#ff8d9a', duration: 0.5 }, 1.5)
+        .fromTo(t1, { color: '#9aa2b9' }, { color: '#c9374f', duration: 0.5 }, 1.5)
         .fromTo(dots[0], { left: 0, opacity: 1 }, { left: 133, duration: 0.7, ease: 'power2.inOut' }, 1.8)
         .to(dots[0], { opacity: 0, duration: 0.2 }, 2.4)
-        .fromTo(t2, { color: '#4a5266' }, { color: '#5ce1e6', duration: 0.5 }, 2.4)
+        .fromTo(t2, { color: '#9aa2b9' }, { color: '#224c9c', duration: 0.5 }, 2.4)
         .fromTo(dots[1], { left: 0, opacity: 1 }, { left: 133, duration: 0.7, ease: 'power2.inOut' }, 2.7)
         .to(dots[1], { opacity: 0, duration: 0.2 }, 3.3)
-        .fromTo(t3, { color: '#4a5266' }, { color: '#ffb547', duration: 0.5 }, 3.3);
+        .fromTo(t3, { color: '#9aa2b9' }, { color: '#0a7434', duration: 0.5 }, 3.3);
       fadeUp(tl, root.querySelector('.cover-foot'), 2.2);
+      wavesIn(root, tl, 0.6);
+      tl.fromTo($('.cover-logos > *', root), { opacity: 0, y: 24, filter: 'blur(8px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.1, ease: 'power3.out', stagger: 0.15 }, 0.2);
       return tl;
     },
     exit(root) {
       const tl = gsap.timeline();
       tl.to($('.cover-title .ch', root), { opacity: 0, yPercent: -60, filter: 'blur(10px)', duration: 0.6, ease: 'power3.in', stagger: 0.012 }, 0);
-      tl.to([root.querySelector('.triad'), root.querySelector('.cover-foot'), root.querySelector('.eyebrow')], { opacity: 0, y: -20, duration: 0.5 }, 0);
+      tl.to([root.querySelector('.triad'), root.querySelector('.cover-foot'), root.querySelector('.cover-logos'), root.querySelector('.waves')], { opacity: 0, y: -20, duration: 0.5 }, 0);
       return tl;
     },
   },
@@ -298,7 +331,9 @@ const choreo = {
       eyebrowIn(root, tl);
       wordsIn(root, tl, 0.15);
       // o "arquivo": linhas decodificadas em sequência e depois riscadas
-      tl.fromTo($('.lrow', root), { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out', stagger: 0.07 }, 0.4);
+      tl.fromTo(root.querySelector('.ledger'), { opacity: 0, y: 50, clipPath: 'inset(0% 0% 100% 0% round 22px)' },
+        { opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0% round 22px)', duration: 1.1, ease: 'expo.out' }, 0.6);
+      tl.fromTo($('.lrow', root), { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out', stagger: 0.07 }, 0.75);
       $('.lrow:not(.head) span:first-child', root).forEach((s, i) => tl.add(scramble(s, 0.55), 0.5 + i * 0.07));
       tl.fromTo($('.strike', root), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: 'power2.inOut', stagger: 0.08 }, 1.6);
       tl.to($('.lrow:not(.head):not(.hl)', root), { opacity: 0.42, duration: 0.6, stagger: 0.05 }, 1.9);
@@ -516,6 +551,9 @@ const choreo = {
       tl.fromTo($('.signoff .ch', root), { opacity: 0, y: 80, filter: 'blur(16px)' },
         { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.4, ease: 'expo.out', stagger: 0.06 }, 2.4);
       fadeUp(tl, root.querySelector('.cover-foot'), 3.2);
+      wavesIn(root, tl, 1.6);
+      tl.fromTo($('.end-logos .govam, .end-logos .row > *', root), { opacity: 0, y: 24, filter: 'blur(8px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.1, ease: 'power3.out', stagger: 0.15 }, 2.8);
       return tl;
     },
     exit: genericExit,

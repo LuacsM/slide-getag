@@ -1,15 +1,7 @@
 # slide-getag
 
-Apresentação executiva da GETAG (SEDUC-AM) — Passado, Presente e Futuro — feita com Reveal.js, GSAP e Three.js.
-
-## Versões
-
-| Pasta | Endereço local | Descrição |
-|---|---|---|
-| `/` (raiz) | http://localhost:5173/ | versão escura original |
-| `clara-v1/` | http://localhost:5173/clara-v1/ | versão clara, ponto de partida salvo |
-| `clara/` | http://localhost:5173/clara/ | versão clara sem menções à fonte dos dados |
-| `clara-v2/` | http://localhost:5173/clara-v2/ | versão clara em tom de prestação de contas à alta gestão |
+Apresentação da GETAG (DETIN · SEDUC-AM) à alta gestão: o que entregamos, o que estamos fazendo e o que vamos fazer.
+Feita com Reveal.js, GSAP e Three.js, em 16:9.
 
 ## Rodar
 
@@ -18,4 +10,14 @@ npm install
 npm run dev
 ```
 
-Navegação: ← → · F tela cheia · S notas do apresentador.
+Abra http://localhost:5173/. Navegação: ← → · F tela cheia · S notas do apresentador.
+
+## Estrutura
+
+- `index.html` — conteúdo dos 14 slides
+- `src/main.js` — coreografia das animações (GSAP) e gráficos
+- `src/scene.js` — fundo de partículas (Three.js)
+- `src/style.css` — estilo da versão clara
+- `src/data.json` — números usados nos slides (gerado por `npm run data`)
+- `assets/` — logos DETIN-GETAG, Governo do Amazonas e SEDUC
+- `scripts/shoot.mjs` — verificação visual com Playwright
