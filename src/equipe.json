@@ -1,0 +1,151 @@
+{
+  "groups": [
+    "Gestão",
+    "Arquitetura",
+    "Requisitos",
+    "Desenvolvimento",
+    "Dados",
+    "Banco de Dados",
+    "Estágio"
+  ],
+  "team": [
+    {
+      "name": "Daniel Marques",
+      "role": "Gerente",
+      "group": "Gestão",
+      "img": "./assets/equipe/daniel-marques.jpg"
+    },
+    {
+      "name": "André Eliel",
+      "role": "Arquiteto de Software",
+      "group": "Arquitetura",
+      "img": "./assets/equipe/andre-eliel.jpg"
+    },
+    {
+      "name": "Lucas Maia",
+      "role": "Analista de Requisitos",
+      "group": "Requisitos",
+      "img": "./assets/equipe/lucas-maia.jpg"
+    },
+    {
+      "name": "Nadiele Praia",
+      "role": "Analista de Requisitos",
+      "group": "Requisitos",
+      "img": "./assets/equipe/nadiele-praia.jpg"
+    },
+    {
+      "name": "Rejane Amorim",
+      "role": "Analista de Requisitos Sênior",
+      "group": "Requisitos",
+      "img": "./assets/equipe/rejane-amorim.jpg"
+    },
+    {
+      "name": "Taynara Silvada",
+      "role": "Analista de Requisitos",
+      "group": "Requisitos",
+      "img": "./assets/equipe/taynara-silvada.jpg"
+    },
+    {
+      "name": "Andremar Neves",
+      "role": "Desenvolvedor",
+      "group": "Desenvolvimento",
+      "img": "./assets/equipe/andremar-neves.jpg"
+    },
+    {
+      "name": "Gabriel Gama",
+      "role": "Desenvolvedor",
+      "group": "Desenvolvimento",
+      "img": "./assets/equipe/gabriel-gama.jpg"
+    },
+    {
+      "name": "Luan Oliveira",
+      "role": "Desenvolvedor",
+      "group": "Desenvolvimento",
+      "img": "./assets/equipe/luan-oliveira.jpg"
+    },
+    {
+      "name": "Lucas Vasconcelos",
+      "role": "Desenvolvedor",
+      "group": "Desenvolvimento",
+      "img": "./assets/equipe/lucas-vasconcelos.jpg"
+    },
+    {
+      "name": "Márcia Carina",
+      "role": "Desenvolvedora",
+      "group": "Desenvolvimento",
+      "img": "./assets/equipe/marcia-carina.jpg"
+    },
+    {
+      "name": "Marcos Ramos",
+      "role": "Desenvolvedor",
+      "group": "Desenvolvimento",
+      "img": "./assets/equipe/marcos-ramos.jpg"
+    },
+    {
+      "name": "Max Cardoso",
+      "role": "Desenvolvedor",
+      "group": "Desenvolvimento",
+      "img": "./assets/equipe/max-cardoso.jpg"
+    },
+    {
+      "name": "Pedro Henrique",
+      "role": "Desenvolvedor",
+      "group": "Desenvolvimento",
+      "img": "./assets/equipe/pedro-henrique.jpg"
+    },
+    {
+      "name": "Rhaniel Miranda",
+      "role": "Desenvolvedor",
+      "group": "Desenvolvimento",
+      "img": "./assets/equipe/rhaniel-miranda.jpg"
+    },
+    {
+      "name": "Diego Sousa",
+      "role": "Cientista de Dados",
+      "group": "Dados",
+      "img": "./assets/equipe/diego-sousa.jpg"
+    },
+    {
+      "name": "Márcio Lobato",
+      "role": "Cientista de Dados",
+      "group": "Dados",
+      "img": "./assets/equipe/marcio-lobato.jpg"
+    },
+    {
+      "name": "Mirian Lima",
+      "role": "Cientista de Dados",
+      "group": "Dados",
+      "img": "./assets/equipe/mirian-lima.jpg"
+    },
+    {
+      "name": "Rafael Jesus",
+      "role": "Cientista de Dados",
+      "group": "Dados",
+      "img": "./assets/equipe/rafael-jesus.jpg"
+    },
+    {
+      "name": "Thuan Matheus",
+      "role": "Cientista de Dados",
+      "group": "Dados",
+      "img": "./assets/equipe/thuan-matheus.jpg"
+    },
+    {
+      "name": "Eduardo Barbosa",
+      "role": "Administrador de Banco de Dados",
+      "group": "Banco de Dados",
+      "img": "./assets/equipe/eduardo-barbosa.jpg"
+    },
+    {
+      "name": "Giovane Carvalho",
+      "role": "Estagiário",
+      "group": "Estágio",
+      "img": "./assets/equipe/giovane-carvalho.jpg"
+    },
+    {
+      "name": "Samarlon de Souza",
+      "role": "Estagiário",
+      "group": "Estágio",
+      "img": "./assets/equipe/samarlon-de-souza.jpg"
+    }
+  ]
+}

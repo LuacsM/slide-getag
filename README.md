@@ -14,10 +14,11 @@ Abra http://localhost:5173/. Navegação: ← → · F tela cheia · S notas do 
 
 ## Estrutura
 
-- `index.html` — conteúdo dos 18 slides
+- `index.html` — conteúdo dos 19 slides
 - `src/main.js` — coreografia das animações (GSAP) e gráficos
 - `src/scene.js` — fundo de partículas (Three.js)
 - `src/style.css` — estilo da versão clara
 - `src/data.json` — números usados nos slides (gerado por `npm run data`)
 - `assets/` — logos DETIN-GETAG, Governo do Amazonas e SEDUC
+- `assets/equipe/` e `src/equipe.json` — fotos padronizadas e funções da equipe (gerados por `npm run equipe` a partir de `IMG DA EQUIPE/`)
 - `scripts/shoot.mjs` — verificação visual com Playwright

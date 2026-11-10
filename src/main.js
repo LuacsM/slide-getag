@@ -3,6 +3,7 @@ import Notes from 'reveal.js/plugin/notes';
 import gsap from 'gsap';
 import { createScene } from './scene.js';
 import data from './data.json';
+import equipe from './equipe.json';
 
 /* ------------------------------------------------------------------ */
 /* dados do portfólio                                                  */
@@ -30,6 +31,7 @@ const VALUES = {
   semStatus: data.qualidade.semStatus,
   semAno: data.qualidade.semAno,
   linhasRef: data.qualidade.linhasRef,
+  equipe: equipe.team.length,
 };
 
 const STATUS_SEGMENTS = [
@@ -52,6 +54,18 @@ const NS = 'http://www.w3.org/2000/svg';
 /* ------------------------------------------------------------------ */
 /* construção de elementos gerados                                     */
 /* ------------------------------------------------------------------ */
+// equipe: fotos padronizadas por scripts/team-photos.cjs (npm run equipe)
+const PHOTOS = import.meta.glob('../assets/equipe/*.jpg', { eager: true, query: '?url', import: 'default' });
+const GROUP_KEY = (g) => g.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]+/g, '-');
+document.getElementById('team').innerHTML = equipe.team.map((p) => `
+  <figure class="mate g-${GROUP_KEY(p.group)}">
+    <div class="ph"><img src="${PHOTOS['../assets/equipe/' + p.img.split('/').pop()]}" alt="${p.name}" /></div>
+    <figcaption><b>${p.name}</b><span>${p.role}</span></figcaption>
+  </figure>`).join('');
+document.getElementById('team-legend').innerHTML = equipe.groups.map((g) => {
+  const n = equipe.team.filter((p) => p.group === g).length;
+  return `<li class="g-${GROUP_KEY(g)}"><i></i><span>${g}</span><em>${String(n).padStart(2, '0')}</em></li>`;
+}).join('');
 // donut (portfólio por status)
 const R = 170, C = 2 * Math.PI * R, GAP = 6;
 const donut = document.getElementById('donut');
@@ -635,6 +649,35 @@ const choreo = {
     exit(root) {
       const tl = genericExit(root);
       tl.to($('.pr', root), { rotationX: 90, opacity: 0, duration: 0.5, ease: 'power2.in', stagger: 0.05 }, 0);
+      return tl;
+    },
+  },
+
+  equipe: {
+    enter(root) {
+      const tl = gsap.timeline();
+      eyebrowIn(root, tl);
+      wordsIn(root, tl, 0.15);
+      fadeUp(tl, root.querySelector('.lede'), 0.6);
+      tl.fromTo($('.team-legend li', root), { opacity: 0, x: -24 },
+        { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out', stagger: 0.07 }, 0.8);
+      // as fotos se abrem em círculo, em onda diagonal pela grade
+      const mates = $('.mate', root);
+      const at = (i) => 0.5 + ((i % 6) + Math.floor(i / 6)) * 0.09;
+      mates.forEach((m, i) => {
+        tl.fromTo(m.querySelector('.ph'), { scale: 0.4, opacity: 0, rotation: -12 },
+          { scale: 1, opacity: 1, rotation: 0, duration: 1, ease: 'back.out(1.7)' }, at(i))
+          .fromTo(m.querySelector('img'), { scale: 1.5, filter: 'blur(8px)' },
+            { scale: 1, filter: 'blur(0px)', duration: 1.2, ease: 'expo.out' }, at(i))
+          .fromTo(m.querySelector('figcaption'), { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, at(i) + 0.25);
+      });
+      counters(root, tl, 0.7, 1.2);
+      return tl;
+    },
+    exit(root) {
+      const tl = genericExit(root);
+      tl.to($('.mate', root), { opacity: 0, scale: 0.9, duration: 0.45, ease: 'power2.in', stagger: { each: 0.015, from: 'end' } }, 0);
       return tl;
     },
   },

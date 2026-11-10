@@ -8,7 +8,8 @@
     "dev": "vite --port 5173 --strictPort",
     "build": "vite build",
     "preview": "vite preview --port 4173 --strictPort",
-    "shoot": "node scripts/shoot.mjs"
+    "shoot": "node scripts/shoot.mjs",
+    "equipe": "node scripts/team-photos.cjs"
   },
   "keywords": [],
   "author": "",

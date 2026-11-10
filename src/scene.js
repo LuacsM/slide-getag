@@ -124,6 +124,7 @@ function buildAttributes() {
 const SPHERE_DONUT = [4.48, 2.09, -2]; // projeta atrás do donut (x≈1260px, y≈400px em 1920×1080)
 const STATES = {
   capa:        { uA: 0,    uB: 0, cam: [0, 0, 26],   look: [0, 0, 0],     fov: 50 },
+  equipe:      { uA: 0.2,  uB: 0, cam: [-3, 1, 24],  look: [2, 0, 0],     fov: 50, o: 0.4 },
   tempos:      { uA: 0.38, uB: 0, cam: [0, 0, 22],   look: [0, 0, 0],     fov: 50, o: 0.75, c: [0, 0, -4], k: 1.6 },
   cap1:        { uA: 0,    uB: 0, cam: [2, 0, 7],    look: [3, 0, -10],   fov: 60 },
   passado:     { uA: 0,    uB: 0, cam: [0, 0, 20],   look: [0, 0, 0],     fov: 50 },
