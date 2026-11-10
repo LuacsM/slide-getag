@@ -4,6 +4,7 @@
     "Arquitetura",
     "Requisitos",
     "Desenvolvimento",
+    "Qualidade",
     "Dados",
     "Banco de Dados",
     "Estágio"
@@ -100,6 +101,12 @@
       "img": "./assets/equipe/rhaniel-miranda.jpg"
     },
     {
+      "name": "Natália Araújo",
+      "role": "Analista de Testes",
+      "group": "Qualidade",
+      "img": "./assets/equipe/natalia-araujo.jpg"
+    },
+    {
       "name": "Diego Sousa",
       "role": "Cientista de Dados",
       "group": "Dados",
@@ -134,6 +141,12 @@
       "role": "Administrador de Banco de Dados",
       "group": "Banco de Dados",
       "img": "./assets/equipe/eduardo-barbosa.jpg"
+    },
+    {
+      "name": "Rafael Pires",
+      "role": "Administrador de Banco de Dados",
+      "group": "Banco de Dados",
+      "img": "./assets/equipe/rafael-pires.jpg"
     },
     {
       "name": "Giovane Carvalho",

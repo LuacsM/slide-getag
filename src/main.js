@@ -663,7 +663,7 @@ const choreo = {
         { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out', stagger: 0.07 }, 0.8);
       // as fotos se abrem em círculo, em onda diagonal pela grade
       const mates = $('.mate', root);
-      const at = (i) => 0.5 + ((i % 6) + Math.floor(i / 6)) * 0.09;
+      const at = (i) => 0.5 + ((i % 7) + Math.floor(i / 7)) * 0.08;
       mates.forEach((m, i) => {
         tl.fromTo(m.querySelector('.ph'), { scale: 0.4, opacity: 0, rotation: -12 },
           { scale: 1, opacity: 1, rotation: 0, duration: 1, ease: 'back.out(1.7)' }, at(i))
